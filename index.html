@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pendidikan Pancasila - Norma Kesusilaan & Hukum</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Fredoka for playful SD vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F3F4F6;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .font-heading {
+            font-family: 'Fredoka', cursive;
+        }
+        /* Custom Scrollbar for smooth touch scroll */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+        /* Touch friendly buttons */
+        .btn-act {
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .btn-act:active {
+            transform: scale(0.96);
+        }
+        /* Canvas drawing overlay styling */
+        #matchingCanvas {
+            touch-action: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex justify-center selection:bg-amber-200">
+
+    <!-- Container Utama Mobile Frame -->
+    <div class="w-full max-w-md bg-white min-h-screen shadow-2xl relative flex flex-col pb-20">
+
+        <!-- Header Aplikasi -->
+        <header class="bg-gradient-to-r from-red-600 via-rose-500 to-amber-500 text-white p-5 rounded-b-3xl shadow-lg sticky top-0 z-30">
+            <div class="flex items-center justify-between">
+                <div>
+                    <span class="bg-white/20 text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-md uppercase tracking-wider text-amber-100">
+                        Kelas 6 SD • Pendidikan Pancasila
+                    </span>
+                    <h1 class="text-xl font-heading font-bold mt-1 tracking-wide text-white">Petualangan Norma</h1>
+                </div>
+                <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30 text-2xl shadow-inner">
+                    🇮🇩
+                </div>
+            </div>
+            <p class="text-xs text-rose-100 mt-2 font-medium">Memahami Norma Kesusilaan & Norma Hukum</p>
+        </header>
+
+        <!-- Main Content View Area -->
+        <main class="flex-1 p-4 overflow-y-auto">
+
+            <!-- Dashboard Navigasi Ringkas (Menu Utama) -->
+            <section id="dashboardNav" class="mb-6">
+                <div class="grid grid-cols-5 gap-2 bg-slate-50 p-2 rounded-2xl border border-slate-200/80 shadow-sm">
+                    <button onclick="switchPortal(1)" id="navBtn1" class="nav-tab flex flex-col items-center p-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-red-600 transition bg-white shadow-sm border border-slate-100">
+                        <span class="text-lg">📖</span>
+                        <span class="text-[10px] mt-0.5">Cerita</span>
+                    </button>
+                    <button onclick="switchPortal(2)" id="navBtn2" class="nav-tab flex flex-col items-center p-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-blue-600 transition">
+                        <span class="text-lg">💡</span>
+                        <span class="text-[10px] mt-0.5">Konsep</span>
+                    </button>
+                    <button onclick="switchPortal(3)" id="navBtn3" class="nav-tab flex flex-col items-center p-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-emerald-600 transition">
+                        <span class="text-lg">📊</span>
+                        <span class="text-[10px] mt-0.5">Tabel</span>
+                    </button>
+                    <button onclick="switchPortal(4)" id="navBtn4" class="nav-tab flex flex-col items-center p-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-amber-600 transition">
+                        <span class="text-lg">❤️</span>
+                        <span class="text-[10px] mt-0.5">Dampak</span>
+                    </button>
+                    <button onclick="switchPortal(5)" id="navBtn5" class="nav-tab flex flex-col items-center p-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-purple-600 transition">
+                        <span class="text-lg">📝</span>
+                        <span class="text-[10px] mt-0.5">Tugas</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- PORTAL 1: CERITA PEMANTIK -->
+            <section id="portal1" class="portal-content">
+                <div class="flex items-center space-x-2 mb-4">
+                    <span class="text-2xl">📖</span>
+                    <h2 class="text-lg font-heading font-bold text-slate-800">Rangkaian Cerita Pemantik</h2>
+                </div>
+
+                <!-- Card Story 1 -->
+                <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-4 mb-4 shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-amber-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">Cerita 1</span>
+                        <span class="text-xs text-amber-700 font-medium">Hati Nurani & Empati</span>
+                    </div>
+                    <h3 class="font-heading text-base font-bold text-amber-900 mb-2">Kursi Prioritas di Kereta Api</h3>
+                    
+                    <!-- SVG Illustration Story 1 -->
+                    <div class="w-full h-40 bg-white rounded-xl p-2 mb-3 border border-amber-100 flex items-center justify-center shadow-inner">
+                        <svg viewBox="0 0 300 150" class="w-full h-full">
+                            <!-- Background Kereta -->
+                            <rect x="10" y="10" width="280" height="130" rx="15" fill="#E2E8F0" />
+                            <rect x="20" y="25" width="60" height="40" rx="5" fill="#94A3B8" />
+                            <rect x="90" y="25" width="60" height="40" rx="5" fill="#94A3B8" />
+                            <rect x="160" y="25" width="60" height="40" rx="5" fill="#94A3B8" />
+                            <rect x="230" y="25" width="50" height="40" rx="5" fill="#94A3B8" />
+                            <!-- Kursi Kereta -->
+                            <path d="M 40,110 L 80,110 L 80,80 L 40,80 Z" fill="#EF4444" rx="3" />
+                            <!-- Ibu Hamil Diberi Kursi -->
+                            <circle cx="60" cy="65" r="10" fill="#FCA5A5" />
+                            <path d="M 50,85 Q 60,75 70,85 Q 75,100 60,110 Z" fill="#EC4899" />
+                            <!-- Ayah Lani Berdiri Memberi Kursi -->
+                            <circle cx="120" cy="55" r="10" fill="#FED7AA" />
+                            <path d="M 110,70 L 130,70 L 125,115 L 115,115 Z" fill="#3B82F6" />
+                            <line x1="120" y1="70" x2="90" y2="85" stroke="#3B82F6" stroke-width="4" stroke-linecap="round"/>
+                            <!-- Gelembung Teks -->
+                            <rect x="140" y="60" width="130" height="35" rx="8" fill="#FFFFFF" stroke="#CBD5E1" />
+                            <text x="150" y="78" font-size="10" font-weight="bold" fill="#1E293B">Silakan duduk, Bu...</text>
+                            <text x="150" y="89" font-size="8" fill="#64748B">Demi kenyamanan Ibu.</text>
+                        </svg>
+                    </div>
+
+                    <p class="text-xs text-slate-700 leading-relaxed mb-2">
+                        Lani bersama Ayah dan Ibu naik kereta api kota yang padat penumpangnya. Ketika kereta berhenti di stasiun berikutnya, seorang ibu hamil naik dengan membawa barang bawaan.
+                    </p>
+                    <p class="text-xs text-slate-700 leading-relaxed font-semibold text-amber-900 bg-amber-100/60 p-2 rounded-lg border border-amber-200/50">
+                        ❤️ Tanpa ragu, Ayah Lani langsung berdiri dan memberikan tempat duduknya. Ayah melakukan hal tersebut karena rasa iba dan empati mendalam yang timbul dari hati nuraninya.
+                    </p>
+                </div>
+
+                <!-- Card Story 2 -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-4 mb-4 shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="bg-blue-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase">Cerita 2</span>
+                        <span class="text-xs text-blue-700 font-medium">Ketertiban & Hukum</span>
+                    </div>
+                    <h3 class="font-heading text-base font-bold text-blue-900 mb-2">Doni Terlambat... Salah Siapa?</h3>
+
+                    <!-- SVG Illustration Story 2 -->
+                    <div class="w-full h-40 bg-white rounded-xl p-2 mb-3 border border-blue-100 flex items-center justify-center shadow-inner">
+                        <svg viewBox="0 0 300 150" class="w-full h-full">
+                            <!-- Jalan Raya & Zebra Cross -->
+                            <rect x="0" y="80" width="300" height="70" fill="#475569" />
+                            <rect x="30" y="90" width="15" height="50" fill="#FFFFFF" />
+                            <rect x="60" y="90" width="15" height="50" fill="#FFFFFF" />
+                            <rect x="90" y="90" width="15" height="50" fill="#FFFFFF" />
+                            <line x1="0" y1="85" x2="300" y2="85" stroke="#F59E0B" stroke-width="3" stroke-dasharray="8,8"/>
+                            <!-- Lampu Merah -->
+                            <rect x="250" y="20" width="20" height="60" rx="5" fill="#1E293B" />
+                            <circle cx="260" cy="35" r="6" fill="#EF4444" />
+                            <circle cx="260" cy="50" r="6" fill="#475569" />
+                            <circle cx="260" cy="65" r="6" fill="#475569" />
+                            <line x1="260" y1="80" x2="260" y2="130" stroke="#1E293B" stroke-width="4"/>
+                            <!-- Sepeda Motor Berhenti di Garis Stop -->
+                            <rect x="130" y="95" width="45" height="20" rx="5" fill="#2563EB" />
+                            <circle cx="140" cy="115" r="8" fill="#0F172A" />
+                            <circle cx="165" cy="115" r="8" fill="#0F172A" />
+                            <circle cx="150" cy="85" r="7" fill="#FCA5A5" /> <!-- Pengendara -->
+                            <path d="M 142,78 A 10,10 0 0,1 158,78 Z" fill="#EF4444" /> <!-- Helm -->
+                            <!-- Motor Terperosok karena Menerobos -->
+                            <path d="M 200,125 Q 215,110 230,135" stroke="#DC2626" stroke-width="3" fill="none" stroke-dasharray="3,3"/>
+                            <text x="185" y="105" font-size="16">💥</text>
+                        </svg>
+                    </div>
+
+                    <p class="text-xs text-slate-700 leading-relaxed mb-2">
+                        Pagi itu Doni bangun kesiangan. Di perjalanan menuju sekolah, Ibu yang mengbonceng Doni tetap memilih berhenti di belakang garis zebra cross saat lampu merah menyala.
+                    </p>
+                    <p class="text-xs text-slate-700 leading-relaxed mb-2">
+                        Tiba-tiba dari samping, ada pengendara motor lain yang nekat menerobos lampu merah dan jalan gertak dengan kencang. Tak jauh di depan, pengendara nekat tersebut terperosok ke lubang dan ditilang polisi.
+                    </p>
+                    <p class="text-xs text-blue-900 font-semibold bg-blue-100/60 p-2 rounded-lg border border-blue-200/50">
+                        ⚖️ Ibu Doni mengajarkan bahwa mematuhi norma hukum lalu lintas wajib hukumnya demi keselamatan diri sendiri dan orang lain!
+                    </p>
+                </div>
+            </section>
+
+            <!-- PORTAL 2: URAIAN KONSEP NORMA -->
+            <section id="portal2" class="portal-content hidden">
+                <div class="flex items-center space-x-2 mb-4">
+                    <span class="text-2xl">💡</span>
+                    <h2 class="text-lg font-heading font-bold text-slate-800">Uraian Konsep Norma</h2>
+                </div>
+
+                <!-- Sub Tab Toggle Concept -->
+                <div class="flex bg-slate-200 p-1 rounded-xl mb-4">
+                    <button onclick="toggleConcept('kesusilaan')" id="tabKesusilaan" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white text-rose-600 shadow-sm transition">
+                        ❤️ Norma Kesusilaan
+                    </button>
+                    <button onclick="toggleConcept('hukum')" id="tabHukum" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition">
+                        ⚖️ Norma Hukum
+                    </button>
+                </div>
+
+                <!-- Dynamic Content Area -->
+                <div id="conceptKesusilaan" class="space-y-3">
+                    <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl">
+                        <h3 class="font-heading text-rose-700 text-sm font-bold mb-1">Pengertian Utama</h3>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Aturan hidup yang bersumber dari <strong>hati nurani dan batin manusia</strong>. Menjadi kompas kebaikan moral diri.
+                        </p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
+                        <h3 class="font-heading text-slate-800 text-sm font-bold mb-2 flex items-center gap-1.5">
+                            <span class="text-rose-500">🎯</span> Tujuan Norma
+                        </h3>
+                        <p class="text-xs text-slate-600">Menuntun manusia agar selalu berbuat baik, jujur, adil, serta memiliki empati tinggi terhadap sesama.</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
+                        <h3 class="font-heading text-slate-800 text-sm font-bold mb-2 flex items-center gap-1.5">
+                            <span class="text-emerald-500">✨</span> Contoh Perilaku Positif
+                        </h3>
+                        <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                            <li>Memberikan tempat duduk kepada lansia/ibu hamil.</li>
+                            <li>Jujur dan tidak menyontek saat ulangan sekolah.</li>
+                            <li>Segera meminta maaf saat melakukan kesalahan.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl">
+                        <h3 class="font-heading text-amber-800 text-sm font-bold mb-1 flex items-center gap-1.5">
+                            <span>⚠️</span> Sanksi Pelanggaran
+                        </h3>
+                        <p class="text-xs text-amber-900">
+                            Berasal dari dalam diri sendiri: <strong>Rasa bersalah, penyesalan mendalam, cemas, gelisah, dan malu.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="conceptHukum" class="space-y-3 hidden">
+                    <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl">
+                        <h3 class="font-heading text-blue-700 text-sm font-bold mb-1">Pengertian Utama</h3>
+                        <p class="text-xs text-slate-700 leading-relaxed">
+                            Aturan resmi yang dibuat oleh <strong>lembaga/badan negara yang berwenang</strong> untuk mengatur tata tertib hidup bermasyarakat.
+                        </p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
+                        <h3 class="font-heading text-slate-800 text-sm font-bold mb-2 flex items-center gap-1.5">
+                            <span class="text-blue-500">🛡️</span> Tujuan & Sifat
+                        </h3>
+                        <p class="text-xs text-slate-600 mb-1"><strong>Tujuan:</strong> Memastikan keadilan, keselamatan, dan ketertiban umum.</p>
+                        <p class="text-xs text-slate-600"><strong>Sifat:</strong> Tegas, <strong>mengikat dan memaksa</strong> seluruh warga negara.</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-2xl shadow-sm">
+                        <h3 class="font-heading text-slate-800 text-sm font-bold mb-2 flex items-center gap-1.5">
+                            <span class="text-indigo-500">🚥</span> Contoh Perilaku Kepatuhan
+                        </h3>
+                        <ul class="text-xs text-slate-600 space-y-1.5 list-disc list-inside">
+                            <li>Mengenakan helm standar saat mengendarai motor.</li>
+                            <li>Berhenti saat lampu merah dan tidak menerobos zebra cross.</li>
+                            <li>Mengantre tertib di atas papan gertak/titian jalan.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-rose-50 border border-rose-200 p-4 rounded-2xl">
+                        <h3 class="font-heading text-rose-800 text-sm font-bold mb-1 flex items-center gap-1.5">
+                            <span>🚔</span> Sanksi Pelanggaran Nyata
+                        </h3>
+                        <p class="text-xs text-rose-900">
+                            Sanksi dari aparat hukum: <strong>Teguran resmi, surat tilang, denda uang, hingga hukuman kurungan/penjara.</strong>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PORTAL 3: TABEL KOMPARASI NORMA -->
+            <section id="portal3" class="portal-content hidden">
+                <div class="flex items-center space-x-2 mb-4">
+                    <span class="text-2xl">📊</span>
+                    <h2 class="text-lg font-heading font-bold text-slate-800">Tabel Komparasi Norma</h2>
+                </div>
+
+                <div class="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-sm p-1">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700 font-heading">
+                                <th class="p-2.5 rounded-l-xl border-b border-slate-200">Aspek Pembeda</th>
+                                <th class="p-2.5 border-b border-slate-200 text-rose-600">❤️ Kesusilaan</th>
+                                <th class="p-2.5 rounded-r-xl border-b border-slate-200 text-blue-600">⚖️ Hukum</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr>
+                                <td class="p-2.5 font-bold bg-slate-50/50">Sumber Utama</td>
+                                <td class="p-2.5">Hati nurani & batin manusia</td>
+                                <td class="p-2.5">Lembaga negara berwenang</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold bg-slate-50/50">Sifat Aturan</td>
+                                <td class="p-2.5"><span class="bg-rose-100 text-rose-800 text-[10px] px-1.5 py-0.5 rounded font-semibold">Otonom</span> (Dorongan diri)</td>
+                                <td class="p-2.5"><span class="bg-blue-100 text-blue-800 text-[10px] px-1.5 py-0.5 rounded font-semibold">Memaksa</span> & mengikat</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold bg-slate-50/50">Sanksi Melanggar</td>
+                                <td class="p-2.5 text-rose-700 font-medium">Gelisah, cemas, penyesalan batin</td>
+                                <td class="p-2.5 text-blue-700 font-medium">Ditilang, denda, atau penjara</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-bold bg-slate-50/50">Dampak Positif</td>
+                                <td class="p-2.5">Hati tenang, damai & dihargai</td>
+                                <td class="p-2.5">Keselamatan & ketertiban umum</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-4 bg-emerald-50 border border-emerald-200 p-3 rounded-xl flex items-start space-x-2">
+                    <span class="text-lg">💡</span>
+                    <p class="text-xs text-emerald-800 leading-snug">
+                        <strong>Kunci Pemahaman:</strong> Norma Kesusilaan menjaga kebersihan hati kita, sedangkan Norma Hukum menjaga keamanan dan ketertiban fisik bersama!
+                    </p>
+                </div>
+            </section>
+
+            <!-- PORTAL 4: EVALUASI DAMPAK & HATI NURANI -->
+            <section id="portal4" class="portal-content hidden">
+                <div class="flex items-center space-x-2 mb-4">
+                    <span class="text-2xl">❤️</span>
+                    <h2 class="text-lg font-heading font-bold text-slate-800">Evaluasi Dampak & Hati Nurani</h2>
+                </div>
+
+                <!-- Bagian 1 -->
+                <div class="bg-white border border-rose-100 shadow-sm rounded-2xl p-4 mb-4">
+                    <div class="flex items-center space-x-2 text-rose-600 mb-2">
+                        <span class="text-xl">⚠️</span>
+                        <h3 class="font-heading font-bold text-sm">1. Bahaya Melanggar Lalu Lintas / Ketertiban</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        Menerobos lampu merah, menyerobot jalan gertak, atau tidak memakai helm bukan sekadar pelanggaran kecil. Perilaku ini sangat membahayakan nyawa diri sendiri dan pengguna jalan lainnya.
+                    </p>
+                    <div class="bg-rose-50 p-3 rounded-xl border border-rose-200 text-xs text-rose-900 space-y-1">
+                        <p>🔴 <strong>Risiko Kecelakaan Fatal:</strong> Benturan fisik dan cidera berat.</p>
+                        <p>🔴 <strong>Kerugian Materiil:</strong> Kendaraan rusak dan biaya rumah sakit.</p>
+                        <p>🔴 <strong>Hukuman Hukum:</strong> Sanksi tilang atau tindak pidana.</p>
+                    </div>
+                </div>
+
+                <!-- Bagian 2 -->
+                <div class="bg-white border border-emerald-100 shadow-sm rounded-2xl p-4">
+                    <div class="flex items-center space-x-2 text-emerald-600 mb-2">
+                        <span class="text-xl">🕊️</span>
+                        <h3 class="font-heading font-bold text-sm">2. Berani Bersikap Jujur Atas Panggilan Nurani</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        Saat ada kesempatan untuk menyontek atau mengambil barang bukan milik kita, hati nurani akan bisikkan kata "Salah". Berani mendengarkan bisikan nurani adalah cerminan anak berkarakter Pancasila.
+                    </p>
+                    <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200 text-xs text-emerald-900 space-y-1">
+                        <p>🟢 <strong>Kejujuran:</strong> Membawa rasa bangga dan kebanggaan diri.</p>
+                        <p>🟢 <strong>Ketenangan Hidup:</strong> Tidur nyenyak tanpa bayang-bayang ketakutan.</p>
+                        <p>🟢 <strong>Kepercayaan:</strong> Disukai oleh teman, guru, dan orang tua.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PORTAL 5: TUGAS FORMATIF INTERAKTIF -->
+            <section id="portal5" class="portal-content hidden">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-2xl">📝</span>
+                        <h2 class="text-lg font-heading font-bold text-slate-800">Tugas Formatif Interaktif</h2>
+                    </div>
+                    <span class="bg-purple-100 text-purple-700 text-xs font-bold px-2.5 py-1 rounded-full">Max: 100 Poin</span>
+                </div>
+
+                <!-- Form Identitas -->
+                <div class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white p-4 rounded-2xl mb-6 shadow-md">
+                    <label class="block text-xs font-bold mb-1 uppercase tracking-wider text-purple-100">Identitas Siswa (Wajib)</label>
+                    <input type="text" id="studentName" placeholder="Ketik Nama Lengkap Siswa..." class="w-full px-3 py-2 rounded-xl text-slate-800 text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-amber-300">
+                </div>
+
+                <form id="quizForm" onsubmit="event.preventDefault(); submitQuiz();">
+                    
+                    <!-- BAGIAN I: BENAR / SALAH (25 POIN) -->
+                    <div class="mb-6 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-3 border-b pb-2">
+                            <h3 class="font-heading text-xs font-bold text-purple-800 uppercase">BAGIAN I: BENAR / SALAH (25 Poin)</h3>
+                            <span class="text-[10px] text-slate-400">@5 Poin</span>
+                        </div>
+
+                        <!-- Soal 1 -->
+                        <div class="mb-4 text-xs">
+                            <p class="font-medium text-slate-800 mb-2">1. Norma kesusilaan bersumber dari hati nurani manusia yang menuntun seseorang untuk berbuat kebaikan dan bersikap jujur.</p>
+                            <div class="flex space-x-3">
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q1" value="BENAR" class="accent-purple-600"> <span>BENAR</span>
+                                </label>
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q1" value="SALAH" class="accent-purple-600"> <span>SALAH</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Soal 2 -->
+                        <div class="mb-4 text-xs">
+                            <p class="font-medium text-slate-800 mb-2">2. Sanksi utama bagi seseorang yang melanggar norma hukum adalah perasaan bersalah, penyesalan, cemas, dan malu dalam diri sendiri.</p>
+                            <div class="flex space-x-3">
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q2" value="BENAR" class="accent-purple-600"> <span>BENAR</span>
+                                </label>
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q2" value="SALAH" class="accent-purple-600"> <span>SALAH</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Soal 3 -->
+                        <div class="mb-4 text-xs">
+                            <p class="font-medium text-slate-800 mb-2">3. Memberikan kursi prioritas kepada ibu hamil atau lansia di dalam transportasi umum merupakan perbuatan yang mencerminkan dorongan empati dari hati nurani.</p>
+                            <div class="flex space-x-3">
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q3" value="BENAR" class="accent-purple-600"> <span>BENAR</span>
+                                </label>
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q3" value="SALAH" class="accent-purple-600"> <span>SALAH</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Soal 4 -->
+                        <div class="mb-4 text-xs">
+                            <p class="font-medium text-slate-800 mb-2">4. Menyeberang jalan melalui zebra cross dan mengendarai sepeda motor dengan mengenakan helm pengaman adalah contoh wujud kepatuhan terhadap norma hukum.</p>
+                            <div class="flex space-x-3">
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q4" value="BENAR" class="accent-purple-600"> <span>BENAR</span>
+                                </label>
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q4" value="SALAH" class="accent-purple-600"> <span>SALAH</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Soal 5 -->
+                        <div class="text-xs">
+                            <p class="font-medium text-slate-800 mb-2">5. Pengemudi sepeda motor yang menerobos lampu merah atau melintasi trotoar gertak demi menghindari keterlambatan dapat dibenarkan karena situasinya mendesak.</p>
+                            <div class="flex space-x-3">
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q5" value="BENAR" class="accent-purple-600"> <span>BENAR</span>
+                                </label>
+                                <label class="flex items-center space-x-1.5 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 w-full cursor-pointer hover:bg-slate-100">
+                                    <input type="radio" name="q5" value="SALAH" class="accent-purple-600"> <span>SALAH</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN II: MENJODOHKAN TARIK GARIS (30 POIN) -->
+                    <div class="mb-6 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-2 border-b pb-2">
+                            <h3 class="font-heading text-xs font-bold text-purple-800 uppercase">BAGIAN II: MENJODOHKAN (30 Poin)</h3>
+                            <span class="text-[10px] text-slate-400">@6 Poin</span>
+                        </div>
+                        <p class="text-[11px] text-slate-500 mb-3">Tarik garis dari titik bulat Kolom Kasus (kiri) ke titik bulat Pilihan (kanan) atau pilih abjad pasangan secara mudah!</p>
+
+                        <!-- Canvas & Selector Fallback Container -->
+                        <div class="space-y-3">
+                            <!-- Match Item 6 -->
+                            <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs gap-2">
+                                <div class="flex-1">
+                                    <span class="font-bold text-purple-700">6.</span> Ayah Lani berdiri & berikan tempat duduk pada ibu hamil di kereta.
+                                </div>
+                                <select id="match6" class="p-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-700 focus:ring-2 focus:ring-purple-400">
+                                    <option value="">Pilih Pasangan...</option>
+                                    <option value="A">A. Sanksi Norma Hukum</option>
+                                    <option value="B">B. Dampak Pelanggaran Lalu Lintas</option>
+                                    <option value="C">C. Sanksi Norma Kesusilaan</option>
+                                    <option value="D">D. Norma Hukum</option>
+                                    <option value="E">E. Kepatuhan Hati Nurani / Empati Kesusilaan</option>
+                                </select>
+                            </div>
+
+                            <!-- Match Item 7 -->
+                            <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs gap-2">
+                                <div class="flex-1">
+                                    <span class="font-bold text-purple-700">7.</span> Siswa merasa cemas & bersalah setelah menyontek jawaban teman.
+                                </div>
+                                <select id="match7" class="p-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-700 focus:ring-2 focus:ring-purple-400">
+                                    <option value="">Pilih Pasangan...</option>
+                                    <option value="A">A. Sanksi Norma Hukum</option>
+                                    <option value="B">B. Dampak Pelanggaran Lalu Lintas</option>
+                                    <option value="C">C. Sanksi Norma Kesusilaan</option>
+                                    <option value="D">D. Norma Hukum</option>
+                                    <option value="E">E. Kepatuhan Hati Nurani / Empati Kesusilaan</option>
+                                </select>
+                            </div>
+
+                            <!-- Match Item 8 -->
+                            <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs gap-2">
+                                <div class="flex-1">
+                                    <span class="font-bold text-purple-700">8.</span> Ditilang oleh petugas polisi atau dikenakan denda aturan negara.
+                                </div>
+                                <select id="match8" class="p-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-700 focus:ring-2 focus:ring-purple-400">
+                                    <option value="">Pilih Pasangan...</option>
+                                    <option value="A">A. Sanksi Norma Hukum</option>
+                                    <option value="B">B. Dampak Pelanggaran Lalu Lintas</option>
+                                    <option value="C">C. Sanksi Norma Kesusilaan</option>
+                                    <option value="D">D. Norma Hukum</option>
+                                    <option value="E">E. Kepatuhan Hati Nurani / Empati Kesusilaan</option>
+                                </select>
+                            </div>
+
+                            <!-- Match Item 9 -->
+                            <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs gap-2">
+                                <div class="flex-1">
+                                    <span class="font-bold text-purple-700">9.</span> Pengendara motor terperosok ke lubang saat menerobos lampu merah.
+                                </div>
+                                <select id="match9" class="p-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-700 focus:ring-2 focus:ring-purple-400">
+                                    <option value="">Pilih Pasangan...</option>
+                                    <option value="A">A. Sanksi Norma Hukum</option>
+                                    <option value="B">B. Dampak Pelanggaran Lalu Lintas</option>
+                                    <option value="C">C. Sanksi Norma Kesusilaan</option>
+                                    <option value="D">D. Norma Hukum</option>
+                                    <option value="E">E. Kepatuhan Hati Nurani / Empati Kesusilaan</option>
+                                </select>
+                            </div>
+
+                            <!-- Match Item 10 -->
+                            <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs gap-2">
+                                <div class="flex-1">
+                                    <span class="font-bold text-purple-700">10.</span> Aturan dari lembaga negara berwenang untuk ketertiban & keadilan.
+                                </div>
+                                <select id="match10" class="p-1.5 bg-white border border-slate-300 rounded-lg text-xs font-bold text-slate-700 focus:ring-2 focus:ring-purple-400">
+                                    <option value="">Pilih Pasangan...</option>
+                                    <option value="A">A. Sanksi Norma Hukum</option>
+                                    <option value="B">B. Dampak Pelanggaran Lalu Lintas</option>
+                                    <option value="C">C. Sanksi Norma Kesusilaan</option>
+                                    <option value="D">D. Norma Hukum</option>
+                                    <option value="E">E. Kepatuhan Hati Nurani / Empati Kesusilaan</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN III: ANALISIS GAMBAR & PENGELOMPOKAN (21 POIN) -->
+                    <div class="mb-6 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-3 border-b pb-2">
+                            <h3 class="font-heading text-xs font-bold text-purple-800 uppercase">BAGIAN III: ANALISIS GAMBAR (21 Poin)</h3>
+                            <span class="text-[10px] text-slate-400">@7 Poin</span>
+                        </div>
+
+                        <!-- Soal 11 -->
+                        <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+                            <p class="font-semibold text-slate-800 mb-1">11. Gambar A: Pengendara motor berhenti tertib di belakang garis zebra cross hingga lampu hijau.</p>
+                            <p class="text-slate-500 text-[11px] mb-2">Analisislah jenis norma & sanksi utamanya!</p>
+                            <div class="grid grid-cols-1 gap-2">
+                                <select id="q11_norma" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-medium text-slate-700">
+                                    <option value="">Pilih Jenis Norma Utama...</option>
+                                    <option value="Hukum">Norma Hukum</option>
+                                    <option value="Kesusilaan">Norma Kesusilaan</option>
+                                </select>
+                                <select id="q11_sanksi" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-medium text-slate-700">
+                                    <option value="">Pilih Sanksi Jika Dilanggar...</option>
+                                    <option value="Ditilang">Ditilang / Denda Surat Polisi</option>
+                                    <option value="Malu">Rasa Malu Diri Sendiri</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Soal 12 -->
+                        <div class="mb-4 bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+                            <p class="font-semibold text-slate-800 mb-1">12. Gambar B: Tora merasa malu dan menyesal setelah ketahuan menyontek saat ulangan.</p>
+                            <div class="grid grid-cols-1 gap-2 mt-2">
+                                <select id="q12_norma" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-medium text-slate-700">
+                                    <option value="">Pilih Jenis Norma Utama...</option>
+                                    <option value="Kesusilaan">Norma Kesusilaan</option>
+                                    <option value="Hukum">Norma Hukum</option>
+                                </select>
+                                <select id="q12_sanksi" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-medium text-slate-700">
+                                    <option value="">Pilih Bentuk Sanksi Utama...</option>
+                                    <option value="Penyesalan">Perasaan Penyesalan & Penyesalan Diri</option>
+                                    <option value="Penjara">Hukuman Kurungan Penjara</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Soal 13 -->
+                        <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs">
+                            <p class="font-semibold text-slate-800 mb-1">13. Gambar C: Warga bersedia mengantre tertib di atas titian papan gertak tanpa menyerobot.</p>
+                            <div class="mt-2">
+                                <select id="q13_kategori" class="w-full p-2 bg-white border border-slate-300 rounded-lg font-medium text-slate-700">
+                                    <option value="">Pilih Kategori Perilaku...</option>
+                                    <option value="Mematuhi">Mematuhi Aturan Ketertiban</option>
+                                    <option value="Pelanggaran">Pelanggaran Ringan</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BAGIAN IV: STUDI KASUS KONTEKSTUAL (24 POIN) -->
+                    <div class="mb-6 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex items-center justify-between mb-3 border-b pb-2">
+                            <h3 class="font-heading text-xs font-bold text-purple-800 uppercase">BAGIAN IV: STUDI KASUS KRITIS (24 Poin)</h3>
+                            <span class="text-[10px] text-slate-400">2 Kasus</span>
+                        </div>
+
+                        <!-- Studi Kasus 1 -->
+                        <div class="mb-5 bg-purple-50/50 p-3 rounded-xl border border-purple-100 text-xs">
+                            <p class="font-bold text-purple-900 mb-1">Case 1: Dilema Doni & Ibu di Lampu Merah</p>
+                            <p class="text-slate-600 mb-2">Ibu Doni tetap memilih berhenti di garis merah meski Doni khawatir terlambat masuk sekolah.</p>
+                            
+                            <label class="block font-semibold text-slate-800 mb-1">A. Menurutmu, apakah tindakan Ibu Doni sudah benar? (Skor 4)</label>
+                            <div class="space-y-1 mb-3">
+                                <label class="flex items-center space-x-2 bg-white p-2 rounded-lg border border-slate-200 cursor-pointer">
+                                    <input type="radio" name="q14_choice" value="BENAR" class="accent-purple-600">
+                                    <span>Ibu Benar (Mematuhi norma hukum & mengutamakan keselamatan)</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-white p-2 rounded-lg border border-slate-200 cursor-pointer">
+                                    <input type="radio" name="q14_choice" value="SALAH" class="accent-purple-600">
+                                    <span>Ibu Salah (Harusnya menerobos agar Doni tidak terlambat)</span>
+                                </label>
+                            </div>
+
+                            <label class="block font-semibold text-slate-800 mb-1">B. Ketik Alasan Kritis-Mu! (Skor 8)</label>
+                            <textarea id="q14_reason" rows="2" placeholder="Mengapa mematuhi aturan lampu merah itu penting? Ketik alasanmu..." class="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:outline-none"></textarea>
+                        </div>
+
+                        <!-- Studi Kasus 2 -->
+                        <div class="bg-purple-50/50 p-3 rounded-xl border border-purple-100 text-xs">
+                            <p class="font-bold text-purple-900 mb-1">Case 2: Kasus Kursi Prioritas Rian</p>
+                            <p class="text-slate-600 mb-2">Rian duduk di bus kota. Seorang kakek tua yang tampak lelah baru saja naik bus dan berdiri di dekatnya.</p>
+                            
+                            <label class="block font-semibold text-slate-800 mb-1">A. Sikap terbaik apa yang harus dilakukan Rian? (Skor 4)</label>
+                            <div class="space-y-1 mb-3">
+                                <label class="flex items-center space-x-2 bg-white p-2 rounded-lg border border-slate-200 cursor-pointer">
+                                    <input type="radio" name="q15_choice" value="GIVE" class="accent-purple-600">
+                                    <span>Berdiri dan memberikan kursi kepada Kakek</span>
+                                </label>
+                                <label class="flex items-center space-x-2 bg-white p-2 rounded-lg border border-slate-200 cursor-pointer">
+                                    <input type="radio" name="q15_choice" value="IGNORE" class="accent-purple-600">
+                                    <span>Pura-pura tidur agar tidak perlu memberikan kursi</span>
+                                </label>
+                            </div>
+
+                            <label class="block font-semibold text-slate-800 mb-1">B. Ketik Alasan Kritis Hati Nurani-Mu! (Skor 8)</label>
+                            <textarea id="q15_reason" rows="2" placeholder="Mengapa kita perlu berempati dan memberikan kursi? Ketik alasanmu..." class="w-full p-2.5 bg-white border border-slate-300 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:outline-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-heading font-bold text-sm py-3.5 px-4 rounded-2xl shadow-lg btn-act flex items-center justify-center space-x-2">
+                        <span>🚀</span>
+                        <span>Selesai & Submit Tugas Formatif</span>
+                    </button>
+                </form>
+            </section>
+
+        </main>
+
+        <!-- MODAL HASIL PENILAIAN (POP-UP SKOR) -->
+        <div id="resultModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-white rounded-3xl max-w-sm w-full p-5 shadow-2xl relative overflow-hidden animate-bounce-short">
+                
+                <!-- Banner Pengumuman Screenshot WA -->
+                <div class="bg-amber-400 text-slate-900 p-2.5 rounded-2xl mb-4 text-center border-2 border-amber-500 shadow-sm">
+                    <p class="text-xs font-bold flex items-center justify-center gap-1">
+                        <span>📸</span> PERHATIAN PENTING
+                    </p>
+                    <p class="text-[11px] font-medium leading-tight mt-0.5">
+                        Silakan <strong>SCREENSHOT</strong> halaman hasil nilai ini dan kirimkan hasilnya ke WhatsApp pribadi Guru!
+                    </p>
+                </div>
+
+                <div class="text-center mb-4">
+                    <span class="text-3xl">🎉</span>
+                    <h2 class="font-heading font-bold text-lg text-slate-800 mt-1">Hasil Tugas Formatif</h2>
+                    <p id="resStudentName" class="text-xs text-purple-600 font-bold">Nama Siswa</p>
+                </div>
+
+                <!-- Big Score Card -->
+                <div class="bg-gradient-to-br from-purple-600 to-indigo-700 text-white rounded-2xl p-4 text-center mb-4 shadow-inner">
+                    <p class="text-xs text-purple-200 font-medium">NILAI AKHIR KAMU</p>
+                    <div id="resTotalScore" class="text-5xl font-heading font-extrabold my-1 text-amber-300">0</div>
+                    <p id="resPredicate" class="text-xs font-semibold text-purple-100">Hebat! PertahankanPrestasi!</p>
+                </div>
+
+                <!-- Breakdown Skor per Bagian -->
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs space-y-1.5 mb-4">
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Bagian I (Benar/Salah):</span>
+                        <span id="scoreP1" class="font-bold text-slate-800">0 / 25</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Bagian II (Menjodohkan):</span>
+                        <span id="scoreP2" class="font-bold text-slate-800">0 / 30</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Bagian III (Analisis Gambar):</span>
+                        <span id="scoreP3" class="font-bold text-slate-800">0 / 21</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-600">Bagian IV (Studi Kasus):</span>
+                        <span id="scoreP4" class="font-bold text-slate-800">0 / 24</span>
+                    </div>
+                </div>
+
+                <!-- Modal Action Buttons -->
+                <div class="space-y-2">
+                    <button onclick="openGuidanceModal()" class="w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-700 font-bold text-xs py-2.5 rounded-xl border border-indigo-200 flex items-center justify-center gap-1">
+                        <span>💡</span>
+                        <span>Panduan Evaluasi / Pembahasan</span>
+                    </button>
+                    <button onclick="closeModal('resultModal')" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-xs py-2.5 rounded-xl">
+                        Tutup Tampilan Nilai
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL PANDUAN EVALUASI & PEMBAHASAN (ANTI REPETISI) -->
+        <div id="guidanceModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+            <div class="bg-white rounded-3xl max-w-sm w-full p-5 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+                
+                <div class="flex items-center justify-between border-b pb-2 mb-3">
+                    <h3 class="font-heading font-bold text-sm text-slate-800 flex items-center gap-1.5">
+                        <span class="text-amber-500">💡</span> Panduan Evaluasi Belajar
+                    </h3>
+                    <button onclick="closeModal('guidanceModal')" class="text-slate-400 hover:text-slate-600 font-bold text-lg">&times;</button>
+                </div>
+
+                <div class="space-y-3 text-xs text-slate-700 leading-relaxed">
+                    <p class="bg-indigo-50 p-2.5 rounded-xl border border-indigo-100 text-indigo-900 font-medium">
+                        📌 <em>Catatan Pembelajaran:</em> Pahami konsep berikut untuk menguji pemahamanmu tanpa sekadar menghafal jawaban!
+                    </p>
+
+                    <div class="border-l-4 border-rose-500 pl-3 py-1">
+                        <h4 class="font-bold text-rose-700 font-heading">Prinsip Utama Norma Kesusilaan</h4>
+                        <p class="mt-0.5">
+                            Bertindaklah berdasarkan <strong>empati, kepedulian, dan kejujuran hati nurani</strong>. Jika dilanggar, tidak ada polisi yang menilang, namun batinmu akan merasakan rasa bersalah, cemas, dan penyesalan mendalam.
+                        </p>
+                    </div>
+
+                    <div class="border-l-4 border-blue-500 pl-3 py-1">
+                        <h4 class="font-bold text-blue-700 font-heading">Prinsip Utama Norma Hukum</h4>
+                        <p class="mt-0.5">
+                            Patuhilah aturan resmi negara (seperti lalu lintas dan ketertiban jalan) demi <strong>keselamatan bersama</strong>. Menyerobot atau menerobos jalan membahayakan nyawa dan berakibat sanksi tegas berupa tilang, denda, atau hukuman dari aparat.
+                        </p>
+                    </div>
+
+                    <div class="border-l-4 border-purple-500 pl-3 py-1">
+                        <h4 class="font-bold text-purple-700 font-heading">Kunci Analisis Kasus Kritis</h4>
+                        <p class="mt-0.5">
+                            Saat menjawab pertanyaan essay/studi kasus, pastikan kamu selalu menyertakan alasan ilmiah seperti kata kunci <em>"keselamatan", "aturan", "hati nurani", "empati", "disiplin"</em>.
+                        </p>
+                    </div>
+                </div>
+
+                <button onclick="closeModal('guidanceModal')" class="w-full mt-4 bg-slate-800 text-white font-bold text-xs py-2.5 rounded-xl shadow">
+                    Saya Paham, Kembali
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Switch Navigasi Portal Utama
+        function switchPortal(portalNumber) {
+            // Hide all content portals
+            const portals = document.querySelectorAll('.portal-content');
+            portals.forEach(p => p.classList.add('hidden'));
+
+            // Show target portal
+            document.getElementById(`portal${portalNumber}`).classList.remove('hidden');
+
+            // Update Tab Styles
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-white', 'shadow-sm', 'border', 'border-slate-100', 'text-red-600', 'text-blue-600', 'text-emerald-600', 'text-amber-600', 'text-purple-600');
+                tab.classList.add('text-slate-600');
+            });
+
+            const activeTab = document.getElementById(`navBtn${portalNumber}`);
+            activeTab.classList.add('bg-white', 'shadow-sm', 'border', 'border-slate-100');
+
+            // Custom color active icon text based on portal
+            const colors = ['text-red-600', 'text-blue-600', 'text-emerald-600', 'text-amber-600', 'text-purple-600'];
+            activeTab.classList.add(colors[portalNumber - 1]);
+        }
+
+        // Toggle Concept Sub Tabs in Portal 2
+        function toggleConcept(type) {
+            const btnK = document.getElementById('tabKesusilaan');
+            const btnH = document.getElementById('tabHukum');
+            const contentK = document.getElementById('conceptKesusilaan');
+            const contentH = document.getElementById('conceptHukum');
+
+            if (type === 'kesusilaan') {
+                btnK.className = "flex-1 py-2 text-xs font-bold rounded-lg bg-white text-rose-600 shadow-sm transition";
+                btnH.className = "flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition";
+                contentK.classList.remove('hidden');
+                contentH.classList.add('hidden');
+            } else {
+                btnH.className = "flex-1 py-2 text-xs font-bold rounded-lg bg-white text-blue-600 shadow-sm transition";
+                btnK.className = "flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition";
+                contentH.classList.remove('hidden');
+                contentK.classList.add('hidden');
+            }
+        }
+
+        // Helper Modal Management
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+        function openGuidanceModal() {
+            openModal('guidanceModal');
+        }
+
+        // KUNCI JAWABAN & LOGIKA EVALUASI TUGAS FORMATIF
+        function submitQuiz() {
+            const studentNameInput = document.getElementById('studentName').value.trim();
+
+            if (!studentNameInput) {
+                alert("⚠️ Harap isi Nama Lengkap Siswa terlebih dahulu sebelum mengumpulkan tugas!");
+                document.getElementById('studentName').focus();
+                return;
+            }
+
+            let scoreP1 = 0;
+            let scoreP2 = 0;
+            let scoreP3 = 0;
+            let scoreP4 = 0;
+
+            // BAGIAN I: BENAR / SALAH (Max 25, 5 per soal)
+            const p1Answers = {
+                q1: "BENAR",
+                q2: "SALAH",
+                q3: "BENAR",
+                q4: "BENAR",
+                q5: "SALAH"
+            };
+
+            for (let i = 1; i <= 5; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === p1Answers[`q${i}`]) {
+                    scoreP1 += 5;
+                }
+            }
+
+            // BAGIAN II: MENJODOHKAN (Max 30, 6 per soal)
+            // 6: E, 7: C, 8: A, 9: B, 10: D
+            if (document.getElementById('match6').value === 'E') scoreP2 += 6;
+            if (document.getElementById('match7').value === 'C') scoreP2 += 6;
+            if (document.getElementById('match8').value === 'A') scoreP2 += 6;
+            if (document.getElementById('match9').value === 'B') scoreP2 += 6;
+            if (document.getElementById('match10').value === 'D') scoreP2 += 6;
+
+            // BAGIAN III: ANALISIS GAMBAR (Max 21, 7 per soal)
+            // Soal 11: Hukum & Ditilang
+            const q11Norma = document.getElementById('q11_norma').value;
+            const q11Sanksi = document.getElementById('q11_sanksi').value;
+            if (q11Norma === 'Hukum' && q11Sanksi === 'Ditilang') scoreP3 += 7;
+
+            // Soal 12: Kesusilaan & Penyesalan
+            const q12Norma = document.getElementById('q12_norma').value;
+            const q12Sanksi = document.getElementById('q12_sanksi').value;
+            if (q12Norma === 'Kesusilaan' && q12Sanksi === 'Penyesalan') scoreP3 += 7;
+
+            // Soal 13: Mematuhi
+            const q13Kategori = document.getElementById('q13_kategori').value;
+            if (q13Kategori === 'Mematuhi') scoreP3 += 7;
+
+            // BAGIAN IV: STUDI KASUS KRITIS (Max 24)
+            // Case 1 (Max 12): Choice BENAR = 4 Poin, Essay Keywords = 8 Poin
+            const q14Choice = document.querySelector('input[name="q14_choice"]:checked');
+            if (q14Choice && q14Choice.value === 'BENAR') scoreP4 += 4;
+
+            const q14Reason = document.getElementById('q14_reason').value.toLowerCase();
+            const keywordsCase1 = ['selamat', 'hukum', 'celaka', 'atur', 'disiplin', 'tertib', 'bahaya', 'nyawa'];
+            let hasKw1 = keywordsCase1.some(kw => q14Reason.includes(kw));
+            if (q14Reason.length >= 8 && hasKw1) {
+                scoreP4 += 8;
+            } else if (q14Reason.length >= 5) {
+                scoreP4 += 4; // Skor parsial jika mencoba menjawab
+            }
+
+            // Case 2 (Max 12): Choice GIVE = 4 Poin, Essay Keywords = 8 Poin
+            const q15Choice = document.querySelector('input[name="q15_choice"]:checked');
+            if (q15Choice && q15Choice.value === 'GIVE') scoreP4 += 4;
+
+            const q15Reason = document.getElementById('q15_reason').value.toLowerCase();
+            const keywordsCase2 = ['nurani', 'kasihan', 'empati', 'tenang', 'bantu', 'baik', 'tua', 'hormat', 'peduli'];
+            let hasKw2 = keywordsCase2.some(kw => q15Reason.includes(kw));
+            if (q15Reason.length >= 8 && hasKw2) {
+                scoreP4 += 8;
+            } else if (q15Reason.length >= 5) {
+                scoreP4 += 4; // Skor parsial
+            }
+
+            // HITUNG TOTAL SKOR AKHIR
+            const totalScore = scoreP1 + scoreP2 + scoreP3 + scoreP4;
+
+            // Update UI Modal Hasil
+            document.getElementById('resStudentName').innerText = `Siswa: ${studentNameInput}`;
+            document.getElementById('resTotalScore').innerText = totalScore;
+            document.getElementById('scoreP1').innerText = `${scoreP1} / 25`;
+            document.getElementById('scoreP2').innerText = `${scoreP2} / 30`;
+            document.getElementById('scoreP3').innerText = `${scoreP3} / 21`;
+            document.getElementById('scoreP4').innerText = `${scoreP4} / 24`;
+
+            // Predikat Kata Ceria
+            let predicate = "Terus Belajar & Tingkatkan Perhatian!";
+            if (totalScore >= 90) {
+                predicate = "🌟 Luar Biasa! Pelopor Pelajar Pancasila!";
+            } else if (totalScore >= 75) {
+                predicate = "👍 Bagus Sekali! Pemahaman Norma Sangat Baik!";
+            } else if (totalScore >= 60) {
+                predicate = "😊 Cukup Baik, Pelajari Kembali Materi!";
+            }
+            document.getElementById('resPredicate').innerText = predicate;
+
+            // Tampilkan Modal Hasil
+            openModal('resultModal');
+        }
+    </script>
+</body>
+</html>
